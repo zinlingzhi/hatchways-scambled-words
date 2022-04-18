@@ -1,12 +1,14 @@
 export function getIndex(split_words, rowIndex, colIndex) {
   var index = 0;
-  split_words.map((rowValues, i) => {
-    if ( i < rowIndex) {
-      index += rowValues.length+1;
-    } else {
-      index += colIndex;
+  if(rowIndex === 0){
+    index = colIndex
+  } else {
+    
+    for(let i = 0; i < rowIndex; i++) {
+      index += (split_words[i].length + 1);
     }
-  })
+    index += colIndex;
+  }
   return index;
 }
 

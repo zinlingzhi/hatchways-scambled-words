@@ -46,3 +46,25 @@
 .char_input{
   width: 100%;
 }
+
+.submit{
+  text-align: center;
+}
+
+.button{
+  width: 100px;
+  height: 42px;
+}
+
+.button.success{
+  background-color: #388e3c;
+  color: white;
+  border: 0;
+  border-radius: 10px;
+  
+  
+}
+.button.success:hover{
+  cursor: pointer;
+  background-color: #489e4c;
+}
