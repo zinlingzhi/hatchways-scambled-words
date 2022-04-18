@@ -33,12 +33,11 @@ function App() {
     split_words.push(word_array);
   })
 
-  const handleKeyDown = (e) => {
-    console.log(e.target.value);
+
+  const handleKeyDown = () => {
+    console.log("a")
   }
-  const handleKeyUp = (e) => {
-    console.log(e.target.value);
-  }
+
   
   return (
     <div className="App">
@@ -47,18 +46,18 @@ function App() {
           <p className="explain_text">Guess the sentence! Start typing. </p>
           <p className="explain_text"> The yellow blocks are meant for spaces</p>
           <p className="score_text">Score: {score}</p>
-          <div className="keyboard" onKeyDown={() => {handleKeyDown()}} onKeyUp={() => handleKeyUp()}>
+          <div className="keyboard">
             {
               split_words.map((words, index) => (
                 <div key={`word-${index}`} className='word'>
                   {words.map((char, jndex) =>(
                     <CharDiv key={`char-${jndex}`}className='char' count={index !== split_words.length-1 ? words.length+1 : words.length}>
-                      <input id={getIndex(split_words, index, jndex)} className="char_input" maxLength={1}/>
+                      <input id={getIndex(split_words, index, jndex)} className="char_input" maxLength={1} onKeyDown={handleKeyDown}/>
                     </CharDiv>
                   ))}
                   {index !== split_words.length-1 && (
                     <CharDiv className='char' count={words.length+1}>
-                      <input id={getSpaceIndex(split_words, index)}className="char_input space" maxLength={1} autoFocus={true}></input>
+                      <input id={getSpaceIndex(split_words, index)}className="char_input space" maxLength={1} onKeyDown={handleKeyDown}></input>
                     </CharDiv>
                   )}
                 </div>
